@@ -35,8 +35,8 @@ export default function Main() {
     e.target.reset();
   }
 
-  function removeIngredient(index) {
-    setIngredients(prev => prev.filter((_, i) => i !== index));
+  function removeIngredient(i) {
+    setIngredients(prev => prev.filter((_, idx) => idx !== i));
   }
 
   return (

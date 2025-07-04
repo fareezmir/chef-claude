@@ -5,13 +5,13 @@ const IngredientsList = forwardRef(
     <section>
       <h2>Ingredients on hand:</h2>
       <ul className="ingredients-list" aria-live="polite">
-        {ingredients.map((ingredient, idx) => (
+        {ingredients.map((ing, idx) => (
           <li key={idx} className="ingredient-item">
-            {ingredient}
+            {ing}
             <button
               className="remove-btn"
               onClick={() => removeIngredient(idx)}
-              aria-label={`Remove ${ingredient}`}
+              aria-label={`Remove ${ing}`}
             >
               ×
             </button>
@@ -34,6 +34,3 @@ const IngredientsList = forwardRef(
 );
 
 export default IngredientsList;
-jsx
-Copy
-Edit
