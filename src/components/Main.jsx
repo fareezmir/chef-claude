@@ -6,6 +6,7 @@ import { getRecipeFromChefClaude } from "../ai";
 export default function Main() {
   const [ingredients, setIngredients] = React.useState([]);
   const [recipe, setRecipe] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const recipeSection = React.useRef(null);
 
   React.useEffect(() => {
@@ -15,20 +16,25 @@ export default function Main() {
   }, [recipe]);
 
   async function getRecipe() {
-    const recipeMarkdown = await getRecipeFromChefClaude(ingredients);
-    setRecipe(recipeMarkdown);
+    setLoading(true);
+    try {
+      const recipeMarkdown = await getRecipeFromChefClaude(ingredients);
+      setRecipe(recipeMarkdown);
+    } finally {
+      setLoading(false);
+    }
   }
 
   function addIngredient(e) {
     e.preventDefault();
     const newIng = e.target.ingredient.value.trim();
     if (!newIng) return;
-    setIngredients(prev => [...prev, newIng]);
+    setIngredients((prev) => [...prev, newIng]);
     e.target.reset();
   }
 
   function removeIngredient(index) {
-    setIngredients(prev => prev.filter((_, i) => i !== index));
+    setIngredients((prev) => prev.filter((_, i) => i !== index));
   }
 
   return (
@@ -43,6 +49,12 @@ export default function Main() {
         <button type="submit">Add ingredient</button>
       </form>
 
+      {loading && (
+        <div className="loading-bar-container">
+          <div className="loading-bar" />
+        </div>
+      )}
+
       {ingredients.length > 0 && (
         <IngredientsList
           ref={recipeSection}
@@ -54,5 +66,5 @@ export default function Main() {
 
       {recipe && <ClaudeRecipe recipe={recipe} />}
     </main>
-);
+  );
 }
