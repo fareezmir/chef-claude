@@ -8,7 +8,7 @@ export default function ClaudeRecipe({ recipe }) {
   useEffect(() => {
     setDisplayed("");
     let i = 0;
-    const speed = 20;
+    const speed = 10; // faster typing
     const typing = setInterval(() => {
       setDisplayed((prev) => prev + recipe[i]);
       i++;

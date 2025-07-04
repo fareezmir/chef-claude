@@ -16,6 +16,7 @@ export default function Main() {
   }, [recipe]);
 
   async function getRecipe() {
+    if (loading) return;
     setLoading(true);
     try {
       const recipeMarkdown = await getRecipeFromChefClaude(ingredients);
@@ -61,10 +62,11 @@ export default function Main() {
           ingredients={ingredients}
           getRecipe={getRecipe}
           removeIngredient={removeIngredient}
+          loading={loading}
         />
       )}
 
       {recipe && <ClaudeRecipe recipe={recipe} />}
     </main>
-  );
+);
 }
