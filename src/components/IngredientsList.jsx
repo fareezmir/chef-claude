@@ -5,7 +5,7 @@ const IngredientsList = forwardRef(({ ingredients, getRecipe, removeIngredient }
     <h2>Ingredients on hand:</h2>
     <ul className="ingredients-list" aria-live="polite">
       {ingredients.map((ingredient, idx) => (
-        <li key={ingredient} className="ingredient-item">
+        <li key={idx} className="ingredient-item">
           {ingredient}
           <button
             className="remove-btn"

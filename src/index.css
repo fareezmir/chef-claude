@@ -115,3 +115,34 @@ ul.ingredients-list > li {
 .suggested-recipe-container ul li, .suggested-recipe-container ol li {
     margin-bottom: 8px;
 }
+
+ul.ingredients-list {
+  list-style-type: disc;
+  padding-left: 1.2em;
+}
+
+ul.ingredients-list > li {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.remove-btn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  line-height: 1;
+  color: #D17557;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.remove-btn:hover {
+  background: #FDE8E4;
+}
