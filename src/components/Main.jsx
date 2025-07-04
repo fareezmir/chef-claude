@@ -12,7 +12,7 @@ export default function Main() {
     
     React.useEffect(() => {
         if (recipe !== "" && recipeSection.current !== null) {
-            // recipeSection.current.scrollIntoView({behavior: "smooth"})
+            recipeSection.current.scrollIntoView({behavior: "smooth"})
             const yCoord = recipeSection.current.getBoundingClientRect().top + window.scrollY
             window.scroll({
                 top: yCoord,
