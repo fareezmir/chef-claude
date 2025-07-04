@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 
-export default function ClaudeRecipe({ recipe }) {
+export default function ClaudeRecipe({ recipe = "" }) {
   const [displayed, setDisplayed] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
     setDisplayed("");
     let i = 0;
-    const speed = 10; // faster typing
+    const speed = 5; // ms per character
     const typing = setInterval(() => {
-      setDisplayed((prev) => prev + recipe[i]);
-      i++;
-      if (i >= recipe.length) clearInterval(typing);
+      if (i < recipe.length) {
+        setDisplayed((prev) => prev + recipe[i]);
+        i++;
+      } else {
+        clearInterval(typing);
+      }
     }, speed);
 
     const blink = setInterval(() => {
