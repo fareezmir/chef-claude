@@ -23,8 +23,12 @@ export default function Main() {
     e.preventDefault();
     const newIng = e.target.ingredient.value.trim();
     if (!newIng) return;
-    setIngredients((prev) => [...prev, newIng]);
+    setIngredients(prev => [...prev, newIng]);
     e.target.reset();
+  }
+
+  function removeIngredient(index) {
+    setIngredients(prev => prev.filter((_, i) => i !== index));
   }
 
   return (
@@ -44,10 +48,11 @@ export default function Main() {
           ref={recipeSection}
           ingredients={ingredients}
           getRecipe={getRecipe}
+          removeIngredient={removeIngredient}
         />
       )}
 
       {recipe && <ClaudeRecipe recipe={recipe} />}
     </main>
-  );
+);
 }
