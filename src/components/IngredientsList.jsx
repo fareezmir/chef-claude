@@ -34,3 +34,6 @@ const IngredientsList = forwardRef(
 );
 
 export default IngredientsList;
+jsx
+Copy
+Edit
