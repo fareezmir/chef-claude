@@ -5,7 +5,7 @@ You are an assistant that receives a list of ingredients that a user has and sug
 `;
 
 const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY   // pulled from Vercel env vars
+  apiKey: process.env.ANTHROPIC_API_KEY   
 });
 
 export default async function handler(req, res) {
