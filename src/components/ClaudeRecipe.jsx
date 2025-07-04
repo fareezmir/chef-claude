@@ -6,12 +6,13 @@ export default function ClaudeRecipe({ recipe = "" }) {
   const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
+    const cleanRecipe = recipe.replace(/undefined\s*$/, "");
     setDisplayed("");
     let i = 0;
-    const speed = 5; // ms per character
+    const speed = 1;
     const typing = setInterval(() => {
-      if (i < recipe.length) {
-        setDisplayed((prev) => prev + recipe[i]);
+      if (i < cleanRecipe.length) {
+        setDisplayed(prev => prev + cleanRecipe[i]);
         i++;
       } else {
         clearInterval(typing);
@@ -19,7 +20,7 @@ export default function ClaudeRecipe({ recipe = "" }) {
     }, speed);
 
     const blink = setInterval(() => {
-      setCursorVisible((v) => !v);
+      setCursorVisible(v => !v);
     }, 500);
 
     return () => {

@@ -30,12 +30,13 @@ export default function Main() {
     e.preventDefault();
     const newIng = e.target.ingredient.value.trim();
     if (!newIng) return;
-    setIngredients((prev) => [...prev, newIng]);
+    if (ingredients.some(ing => ing.toLowerCase() === newIng.toLowerCase())) return;
+    setIngredients(prev => [...prev, newIng]);
     e.target.reset();
   }
 
   function removeIngredient(index) {
-    setIngredients((prev) => prev.filter((_, i) => i !== index));
+    setIngredients(prev => prev.filter((_, i) => i !== index));
   }
 
   return (
